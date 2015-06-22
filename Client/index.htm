@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="description" content="kevin-main.com">
+    <meta name="author" content="Kevin Main">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hack Day 2015</title>
+	<script src="Scripts/jquery.min.js"></script>
+	<script>
+		$(function () {
+			$("#GetValue").click(function () {
+				$.ajax({
+					url: "http://localhost/HackDay", success: function (result) {
+						$("#Result").html(result);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body class="cssAnimate onepager">
+	<button id="GetValue">Get Value</button>
+	<div id="Result"></div>
+</body>
+</html>
