@@ -21,11 +21,24 @@
 					}
 				});
 			});
+			
+			$("#PostValue").click(function () {
+				$.ajax({
+					type: "POST",
+				  	url: "http://localhost:80/HackDay/Message?message=" + $("#txtValue").val(),success: function (result) {
+						$("#Result").html("Success");
+					}
+				});
+			});
 		});
 	</script>
 </head>
-<body class="cssAnimate onepager">
+<body>
 	<button id="GetValue">Get Value</button>
+	<br /></br />
+	<input type="text" id="txtValue">
+	<button id="PostValue">Post Value</button>
+	<br /></br />
 	<div id="Result"></div>
 </body>
 </html>

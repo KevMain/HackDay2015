@@ -26,22 +26,10 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("Message/{message}")]
-        public IHttpActionResult PostWithDataFromUrl(string message)
+        [Route("Message")]
+        public IHttpActionResult Post(string message)
         {
             _theMessage = message;
-            return Ok(_theMessage);
-        }
-
-        [HttpPost]
-        [Route("Message")]
-        public IHttpActionResult PostWithDataFromBody([FromBody]JObject data)
-        {
-            JToken message;
-            if (data.TryGetValue("message", out message))
-            {
-                _theMessage = message.Value<string>();
-            }
             return Ok(_theMessage);
         }
     }
