@@ -8,42 +8,47 @@ namespace WebAPI.UnitTests.Controllers
     [TestClass]
     public class MessageTests
     {
-        [TestMethod]
-        public void GetReturnsMessage()
+        private MessageController _controller;
+
+        [TestInitialize]
+        public void Setup()
         {
-            // Arrange
-            var controller = new MessageController
+            _controller = new MessageController
             {
                 Request = new HttpRequestMessage(),
                 Configuration = new HttpConfiguration()
             };
+        }
+
+        [TestMethod]
+        public void GetReturnsMessage()
+        {
+            // Arrange
+            const int defaultId = 1;
+            const string expectedValue = "Default Value";
 
             // Act
-            var response = controller.Get(1);
+            var response = _controller.Get(defaultId);
             
             // Assert
             string message;
             Assert.IsTrue(response.TryGetContentValue(out message));
-            Assert.AreEqual("Default Value", message);
+            Assert.AreEqual(expectedValue, message);
         }
 
         [TestMethod]
         public void PostCreatesMessage()
         {
-            // Arrange
-            var controller = new MessageController
-            {
-                Request = new HttpRequestMessage(),
-                Configuration = new HttpConfiguration()
-            };
+            // Arange
+            const string newMessage = "New Message";
 
             // Act
-            var response = controller.Post("New Message");
+            var response = _controller.Post(newMessage);
 
             // Assert
             string message;
             Assert.IsTrue(response.TryGetContentValue(out message));
-            Assert.AreEqual("New Message", message);
+            Assert.AreEqual(newMessage, message);
         }
     }
 }
