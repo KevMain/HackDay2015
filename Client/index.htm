@@ -16,7 +16,7 @@
 		$(function () {
 			$("#GetValue").click(function () {
 				$.ajax({
-					url: "http://localhost/HackDay/Message", success: function (result) {
+					url: "http://localhost/HackDay/Message/" +  $("#txtId").val(), success: function (result) {
 						$("#Result").html(result);
 					}
 				});
@@ -26,7 +26,7 @@
 				$.ajax({
 					type: "POST",
 				  	url: "http://localhost:80/HackDay/Message?message=" + $("#txtValue").val(),success: function (result) {
-						$("#Result").html("Success");
+						$("#Result").html(result);
 					}
 				});
 			});
@@ -34,7 +34,8 @@
 	</script>
 </head>
 <body>
-	<button id="GetValue">Get Value</button>
+	<input type="text" id="txtId" style="width:40px;">
+	<button id="GetValue">Get Value For Id</button>
 	<br /></br />
 	<input type="text" id="txtValue">
 	<button id="PostValue">Post Value</button>

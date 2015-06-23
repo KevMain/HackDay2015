@@ -1,24 +1,31 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace API.Controllers
 {
     public class MessageController : ApiController
     {
-        private static string _theMessage = "Hi Mum";
-
+        private static readonly Dictionary<int, string> Messages = new Dictionary<int, string> {{1, "Default Value"}};
+        
         [HttpGet]
-        [Route("Message")]
-        public IHttpActionResult Get()
+        [Route("Message/{messageId}")]
+        public HttpResponseMessage Get(int messageId)
         {
-            return Ok(_theMessage);
+            return Request.CreateResponse(HttpStatusCode.OK, Messages[messageId]);
         }
 
         [HttpPost]
         [Route("Message")]
-        public IHttpActionResult Post(string message)
+        public HttpResponseMessage Post(string message)
         {
-            _theMessage = message;
-            return Ok(_theMessage);
+            var nextId = Messages.Max(m => m.Key) + 1;
+
+            Messages.Add(nextId, message);
+
+            return Request.CreateResponse(HttpStatusCode.Created, Messages[nextId]);
         }
     }
 }
