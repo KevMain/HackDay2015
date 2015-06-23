@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
-using Newtonsoft.Json.Linq;
+﻿using System.Web.Http;
 
 namespace API.Controllers
 {
@@ -10,19 +8,9 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("Message")]
-        public string Get()
+        public IHttpActionResult Get()
         {
-            return _theMessage;
-        }
-
-        [HttpGet]
-        [Route("Message/{count:int:min(1)?}")]
-        public IEnumerable<string> Get(int count)
-        {
-            for (var i = 1; i <= count; i++)
-            {
-                yield return _theMessage;
-            }
+            return Ok(_theMessage);
         }
 
         [HttpPost]
