@@ -20,35 +20,35 @@ namespace WebAPI.UnitTests.Controllers
             };
         }
 
-        [TestMethod]
-        public void GetReturnsMessage()
-        {
-            // Arrange
-            const int defaultId = 1;
-            const string expectedValue = "Default Value";
+        //[TestMethod]
+        //public void GetReturnsMessage()
+        //{
+        //    // Arrange
+        //    const int defaultId = 1;
+        //    const string expectedValue = "Default Value";
 
-            // Act
-            var response = _controller.Get(defaultId);
+        //    // Act
+        //    var response = _controller.Get(defaultId);
             
-            // Assert
-            string message;
-            Assert.IsTrue(response.TryGetContentValue(out message));
-            Assert.AreEqual(expectedValue, message);
-        }
+        //    // Assert
+        //    string message;
+        //    Assert.IsTrue(response.TryGetContentValue(out message));
+        //    Assert.AreEqual(expectedValue, message);
+        //}
 
-        [TestMethod]
-        public void PostCreatesMessage()
-        {
-            // Arange
-            const string newMessage = "New Message";
+        //[TestMethod]
+        //public void PostCreatesMessage()
+        //{
+        //    // Arange
+        //    const string newMessage = "New Message";
 
-            // Act
-            var response = _controller.Post(newMessage);
+        //    // Act
+        //    var response = _controller.Post(newMessage);
 
-            // Assert
-            string message;
-            Assert.IsTrue(response.TryGetContentValue(out message));
-            Assert.AreEqual(newMessage, message);
-        }
+        //    // Assert
+        //    string message;
+        //    Assert.IsTrue(response.TryGetContentValue(out message));
+        //    Assert.AreEqual(newMessage, message);
+        //}
     }
 }
